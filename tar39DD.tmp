@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://3nbkotill3lf"]
+
+[ext_resource type="Script" path="res://target.gd" id="1_gsatx"]
+
+[sub_resource type="Animation" id="Animation_hniph"]
+resource_name = "new_animation"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_v2d4v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3np5v"]
+_data = {
+"RESET": SubResource("Animation_v2d4v"),
+"new_animation": SubResource("Animation_hniph")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4ref"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_1orkp"]
+material = SubResource("StandardMaterial3D_j4ref")
+
+[node name="Target" type="CSGBox3D" groups=["target"]]
+use_collision = true
+script = ExtResource("1_gsatx")
+max_health = null
+speed = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3np5v")
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_1orkp")

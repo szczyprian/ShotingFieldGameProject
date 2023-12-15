@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsy7qbagwecsi"]
+
+[sub_resource type="GDScript" id="GDScript_46fwu"]
+script/source = "extends BoxContainer
+
+
+func _process(delta: float) -> void:
+		if Input.is_action_just_pressed(\"pauseGame\"):
+			if get_tree().paused:
+				get_tree().paused = false
+				visible = false
+			else:
+				get_tree().paused = true
+				visible = true
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_pv4bh"]
+font_size = 64
+
+[node name="BoxContainer" type="BoxContainer"]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_46fwu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0.584314)
+
+[node name="HBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Pause"
+label_settings = SubResource("LabelSettings_pv4bh")
+
+[node name="QuitButton" type="Button" parent="ColorRect/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
+[connection signal="pressed" from="ColorRect/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

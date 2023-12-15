@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhs4gehfqeu3a"]
+
+[ext_resource type="Script" path="res://RayCamera.gd" id="1_xxkv6"]
+[ext_resource type="PackedScene" uid="uid://c60aao6gdcr2f" path="res://weapon.tscn" id="2_p3se4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yi1lf"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_liqvd"]
+font_size = 32
+
+[node name="RayCastCamera" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+script = ExtResource("1_xxkv6")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Bullet Count"
+label_settings = SubResource("LabelSettings_yi1lf")
+vertical_alignment = 2
+
+[node name="PointsLabel" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Points"
+label_settings = SubResource("LabelSettings_liqvd")
+
+[node name="Weapon" parent="." node_paths=PackedStringArray("raycast") instance=ExtResource("2_p3se4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1)
+raycast = NodePath("../RayCast3D")

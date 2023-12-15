@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://c60aao6gdcr2f"]
+
+[ext_resource type="Script" path="res://weapon.gd" id="1_80pvg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qtmyu"]
+albedo_color = Color(0.415686, 0.180392, 0.0784314, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nyy8k"]
+material = SubResource("StandardMaterial3D_qtmyu")
+size = Vector3(0.5, 0.5, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gf554"]
+size = Vector3(0.25, 0.25, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hikjj"]
+size = Vector3(0.125, 0.25, 0.25)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y8ey8"]
+radius = 0.1
+height = 1.25
+
+[node name="Weapon" type="Node3D"]
+script = ExtResource("1_80pvg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_nyy8k")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00876078, -1.07801)
+mesh = SubResource("BoxMesh_gf554")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.186427, -1.94702)
+mesh = SubResource("BoxMesh_hikjj")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.263247, 0.355926)
+mesh = SubResource("CapsuleMesh_y8ey8")
