@@ -14,6 +14,8 @@ var health:int:
 @export var grey_area_points:int = 25
 @export var green_area_points:int = 50
 @export var red_area_points:int = 100
+@export var PopUp:PackedScene
+
 var delete_delay:float = 2.5
 
 var speed:float = 2.0
@@ -44,13 +46,21 @@ func _process(delta: float) -> void:
 
 func deal_damage(damage:int,collider:CSGBox3D) -> int:
 	health-=damage
-	animation_player.play("take_shot")	
+	animation_player.play("take_shot")
+	var new_pop_up = PopUp.instantiate()
+
 #	label_animation.play("display_points")
 	if collider.name == "GreenArea":
+		add_child(new_pop_up)
+		new_pop_up.label_3d.text = str(green_area_points)	
 		return green_area_points
 	elif collider.name == "GreayArea":
+		add_child(new_pop_up)
+		new_pop_up.label_3d.text = str(grey_area_points)	
 		return grey_area_points
 	elif collider.name == "RedArea":
+		add_child(new_pop_up)
+		new_pop_up.label_3d.text = str(red_area_points)	
 		return red_area_points
 	else:
 		return 0

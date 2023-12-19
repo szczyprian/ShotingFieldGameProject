@@ -16,12 +16,13 @@ func _ready() -> void:
 	tween.tween_interval(spawning_time)
 	tween.tween_callback(timer.stop)
 	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if spawning_time >=0.0:
 		spawning_time-=delta
-		print(spawning_time)
+#		print(spawning_time)
 
 func spawn_targert() ->void:
 	var new_target = target.instantiate()
