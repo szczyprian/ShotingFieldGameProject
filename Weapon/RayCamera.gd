@@ -21,12 +21,14 @@ var time:float:
 		else:
 			time_label.text = "Level Ended"
 			v_box_container.visible = true
+			errned_points_label.text = 'You Get ' + str(points) + ' Points' 
 
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @onready var label: Label = $MarginContainer/Label
 @onready var points_label: Label = $MarginContainer/PointsLabel
 @onready var time_label: Label = $MarginContainer/TimeLabel
 @onready var v_box_container: VBoxContainer = $MarginContainer/VBoxContainer
+@onready var errned_points_label: Label = $MarginContainer/VBoxContainer/ErrnedPointsLabel
 
 
 
