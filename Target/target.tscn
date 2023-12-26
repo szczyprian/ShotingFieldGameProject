@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://3nbkotill3lf"]
 
-[ext_resource type="Script" path="res://target.gd" id="1_gsatx"]
-[ext_resource type="PackedScene" uid="uid://dqybryqtecsux" path="res://pop_up.tscn" id="2_8neyo"]
+[ext_resource type="Script" path="res://Target/target.gd" id="1_ytf6q"]
+[ext_resource type="PackedScene" uid="uid://dqybryqtecsux" path="res://Target/pop_up.tscn" id="2_f0w0i"]
 
 [sub_resource type="Animation" id="Animation_v2d4v"]
 length = 0.001
@@ -248,8 +248,8 @@ albedo_color = Color(1, 0, 0, 1)
 
 [node name="Target" type="Node3D" groups=["target"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.114495, 0, 1, 0)
-script = ExtResource("1_gsatx")
-PopUp = ExtResource("2_8neyo")
+script = ExtResource("1_ytf6q")
+PopUp = ExtResource("2_f0w0i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

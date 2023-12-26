@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bd3er3ts7nrvd"]
 
-[ext_resource type="PackedScene" uid="uid://bhs4gehfqeu3a" path="res://RayCamera.tscn" id="1_kx5se"]
-[ext_resource type="PackedScene" uid="uid://b7xoitp8dppc1" path="res://target_spawner.tscn" id="2_xgctk"]
+[ext_resource type="PackedScene" uid="uid://bhs4gehfqeu3a" path="res://Weapon/RayCamera.tscn" id="1_kx5se"]
+[ext_resource type="PackedScene" uid="uid://b7xoitp8dppc1" path="res://Target/target_spawner.tscn" id="2_xgctk"]
 [ext_resource type="PackedScene" uid="uid://dsy7qbagwecsi" path="res://PauseMenu.tscn" id="3_hspcm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wnkeh"]

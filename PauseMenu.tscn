@@ -16,6 +16,14 @@ func _process(delta: float) -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+
+
+
+func _on_resume_button_pressed() -> void:
+	get_tree().paused = false
+	visible = false
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_pv4bh"]
@@ -51,10 +59,16 @@ size_flags_horizontal = 4
 text = "Pause"
 label_settings = SubResource("LabelSettings_pv4bh")
 
+[node name="ResumeButton" type="Button" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Resume"
+
 [node name="QuitButton" type="Button" parent="ColorRect/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Quit"
 
+[connection signal="pressed" from="ColorRect/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ColorRect/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

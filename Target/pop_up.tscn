@@ -1,10 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://dqybryqtecsux"]
 
-[ext_resource type="Script" path="res://pop_up.gd" id="1_wqaxm"]
+[ext_resource type="Script" path="res://Target/pop_up.gd" id="1_24rt6"]
 
 [node name="PopUp" type="Node3D"]
 top_level = true
-script = ExtResource("1_wqaxm")
+script = ExtResource("1_24rt6")
 
 [node name="Label3D" type="Label3D" parent="."]
 text = "Points"

@@ -1,10 +1,11 @@
-extends Area3D
+extends Node3D
 
 @export var target:PackedScene
 @export var target_speed:float = 3.0
 @export var target_direction:Vector3 = Vector3.RIGHT
 @export var delete_delay:float = 2.5
 @export var spawning_time:float = 30.0
+@export var spawning_freqency:float = 5.0
 
 @onready var timer: Timer = $Timer
 
@@ -12,9 +13,11 @@ extends Area3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	timer.wait_time = spawning_freqency
 	var tween = create_tween()
 	tween.tween_interval(spawning_time)
 	tween.tween_callback(timer.stop)
+	
 	
 	
 

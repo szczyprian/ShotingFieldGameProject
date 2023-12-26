@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c60aao6gdcr2f"]
 
-[ext_resource type="Script" path="res://weapon.gd" id="1_80pvg"]
+[ext_resource type="Script" path="res://Weapon/weapon.gd" id="1_1l6vh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qtmyu"]
 albedo_color = Color(0.415686, 0.180392, 0.0784314, 1)
@@ -20,7 +20,7 @@ radius = 0.1
 height = 1.25
 
 [node name="Weapon" type="Node3D"]
-script = ExtResource("1_80pvg")
+script = ExtResource("1_1l6vh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_nyy8k")

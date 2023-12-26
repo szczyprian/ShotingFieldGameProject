@@ -20,11 +20,13 @@ var time:float:
 			time_label.text = "Time: " + str(round(time))
 		else:
 			time_label.text = "Level Ended"
+			v_box_container.visible = true
 
 @onready var ray_cast_3d: RayCast3D = $RayCast3D
 @onready var label: Label = $MarginContainer/Label
 @onready var points_label: Label = $MarginContainer/PointsLabel
 @onready var time_label: Label = $MarginContainer/TimeLabel
+@onready var v_box_container: VBoxContainer = $MarginContainer/VBoxContainer
 
 
 
@@ -72,3 +74,11 @@ func reload() ->void:
 
 
 
+
+
+func _on_retry_button_pressed() -> void:
+	get_tree().reload_current_scene()
+
+
+func _on_quit_button_pressed() -> void:
+	get_tree().quit()

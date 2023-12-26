@@ -1,16 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://b7xoitp8dppc1"]
 
-[ext_resource type="Script" path="res://TargetSpawner.gd" id="1_l5bvy"]
-[ext_resource type="PackedScene" uid="uid://3nbkotill3lf" path="res://target.tscn" id="2_r5j7f"]
+[ext_resource type="Script" path="res://Target/TargetSpawner.gd" id="1_ayfxt"]
+[ext_resource type="PackedScene" uid="uid://3nbkotill3lf" path="res://Target/target.tscn" id="2_n6dgm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_2tudo"]
 
-[node name="TargetSpawner" type="Area3D"]
-script = ExtResource("1_l5bvy")
-target = ExtResource("2_r5j7f")
+[node name="TargetSpawner" type="Node3D"]
+script = ExtResource("1_ayfxt")
+target = ExtResource("2_n6dgm")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
 autostart = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
