@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7xoitp8dppc1"]
+[gd_scene load_steps=5 format=3 uid="uid://b7xoitp8dppc1"]
 
 [ext_resource type="Script" path="res://Target/TargetSpawner.gd" id="1_ayfxt"]
 [ext_resource type="PackedScene" uid="uid://3nbkotill3lf" path="res://Target/target.tscn" id="2_n6dgm"]
+
+[sub_resource type="Curve" id="Curve_3tn5f"]
+min_value = 1.0
+max_value = 5.0
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 1), -6.37771, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_2tudo"]
 
 [node name="TargetSpawner" type="Node3D"]
 script = ExtResource("1_ayfxt")
 target = ExtResource("2_n6dgm")
+spawning_frequemcy_curve = SubResource("Curve_3tn5f")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

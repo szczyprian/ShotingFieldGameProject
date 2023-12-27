@@ -5,7 +5,7 @@ extends Node3D
 @export var target_direction:Vector3 = Vector3.RIGHT
 @export var delete_delay:float = 2.5
 @export var spawning_time:float = 30.0
-@export var spawning_freqency:float = 5.0
+@export var spawning_frequemcy_curve: Curve
 
 @onready var timer: Timer = $Timer
 
@@ -13,7 +13,7 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timer.wait_time = spawning_freqency
+	timer.wait_time = spawning_frequemcy_curve.sample(randf_range(0.0,1.0))
 	var tween = create_tween()
 	tween.tween_interval(spawning_time)
 	tween.tween_callback(timer.stop)
@@ -29,6 +29,8 @@ func _process(delta: float) -> void:
 
 func spawn_targert() ->void:
 	var new_target = target.instantiate()
+	timer.wait_time = spawning_frequemcy_curve.sample(randf_range(0.0,1.0))
+	print(timer.wait_time)
 	new_target.delete_delay = delete_delay
 	add_child(new_target)
 	new_target.speed = target_speed

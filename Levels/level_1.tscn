@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0f45dqkjl0rd"]
+[gd_scene load_steps=11 format=3 uid="uid://c0f45dqkjl0rd"]
 
 [ext_resource type="PackedScene" uid="uid://bhs4gehfqeu3a" path="res://Weapon/RayCamera.tscn" id="1_v6ooi"]
 [ext_resource type="PackedScene" uid="uid://b7xoitp8dppc1" path="res://Target/target_spawner.tscn" id="2_m4aqt"]
@@ -22,6 +22,18 @@ albedo_color = Color(0, 0.141176, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3l1y"]
 albedo_color = Color(0, 0.541176, 0.0470588, 1)
 
+[sub_resource type="Curve" id="Curve_loqm8"]
+min_value = 1.0
+max_value = 2.0
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ev1t5"]
+min_value = 4.0
+max_value = 5.0
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, 4), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Level1" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -33,6 +45,7 @@ shadow_enabled = true
 
 [node name="RayCastCamera" parent="." instance=ExtResource("1_v6ooi")]
 max_bullets = 100
+game_time = 35.0
 
 [node name="Background" type="Node3D" parent="."]
 
@@ -68,8 +81,22 @@ size = Vector3(25, 7, 1)
 
 [node name="TargetSpawner" parent="." instance=ExtResource("2_m4aqt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5646, -1.03589, -7.38247)
+target_speed = 6.0
 delete_delay = 30.0
 spawning_time = 25.0
-spawning_freqency = 2.0
+
+[node name="TargetSpawner2" parent="." instance=ExtResource("2_m4aqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4354, -1.03589, -11.3825)
+target_direction = Vector3(-1, 0, 0)
+delete_delay = 30.0
+spawning_time = 25.0
+spawning_frequemcy_curve = SubResource("Curve_loqm8")
+
+[node name="TargetSpawner3" parent="." instance=ExtResource("2_m4aqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5646, -1.03589, -15.3825)
+target_speed = 10.0
+delete_delay = 30.0
+spawning_time = 25.0
+spawning_frequemcy_curve = SubResource("Curve_ev1t5")
 
 [node name="BoxContainer" parent="." instance=ExtResource("3_q0st1")]
