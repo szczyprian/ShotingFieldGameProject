@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhs4gehfqeu3a"]
+[gd_scene load_steps=7 format=3 uid="uid://bhs4gehfqeu3a"]
 
 [ext_resource type="Script" path="res://Weapon/RayCamera.gd" id="1_xxkv6"]
+[ext_resource type="PackedScene" uid="uid://cv5jilnamjp4x" path="res://Particles/MuzzleParticles.tscn" id="2_m62fq"]
 [ext_resource type="PackedScene" uid="uid://c60aao6gdcr2f" path="res://Weapon/weapon.tscn" id="2_p3se4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yi1lf"]
@@ -12,9 +13,10 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_ed0y2"]
 font_size = 32
 
-[node name="RayCastCamera" type="Camera3D"]
+[node name="RayCastCamera" type="Camera3D" node_paths=PackedStringArray("muzzleFlashParticle")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("1_xxkv6")
+muzzleFlashParticle = NodePath("Weapon/MuzlleParticles")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 
@@ -73,6 +75,9 @@ text = "Quit"
 [node name="Weapon" parent="." node_paths=PackedStringArray("raycast") instance=ExtResource("2_p3se4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -1)
 raycast = NodePath("../RayCast3D")
+
+[node name="MuzlleParticles" parent="Weapon" instance=ExtResource("2_m62fq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03111, -2.10584)
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

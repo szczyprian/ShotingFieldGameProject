@@ -53,7 +53,7 @@ game_time = 35.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -18)
 material_override = SubResource("StandardMaterial3D_yq4ht")
 flip_faces = true
-size = Vector3(30, 15, 30)
+size = Vector3(30, 15, 36)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Background"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.67975, -1.25919)

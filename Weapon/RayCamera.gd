@@ -2,6 +2,7 @@ extends Camera3D
 
 @export var max_bullets:int = 3
 @export var game_time:float = 30.0
+@export var muzzleFlashParticle: GPUParticles3D
 
 var points:int:
 	set(points_in):
@@ -33,6 +34,8 @@ var time:float:
 
 
 
+
+
 func  _ready() -> void:
 	Input.set_default_cursor_shape(Input.CURSOR_CROSS)
 	bullets = max_bullets
@@ -50,11 +53,15 @@ func _process(delta: float) -> void:
 		var collider = ray_cast_3d.get_collider()
 		if collider.is_in_group('target'):
 				if Input.is_action_just_pressed("shot"):
+					muzzleFlashParticle.restart()
 					print(collider)
 					points+=collider.get_parent().deal_damage(10,collider)
+					
+					
 				
 	
 	if Input.is_action_just_pressed("shot") and bullets>0:
+		muzzleFlashParticle.restart()
 		bullets-=1			
 		
 	if Input.is_action_just_pressed("reload"):
