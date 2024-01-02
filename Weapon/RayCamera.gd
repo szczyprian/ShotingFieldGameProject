@@ -3,6 +3,8 @@ extends Camera3D
 @export var max_bullets:int = 3
 @export var game_time:float = 30.0
 @export var muzzleFlashParticle: GPUParticles3D
+@export var weapon_mesh:Node3D
+
 
 var points:int:
 	set(points_in):
@@ -30,7 +32,7 @@ var time:float:
 @onready var time_label: Label = $MarginContainer/TimeLabel
 @onready var v_box_container: VBoxContainer = $MarginContainer/VBoxContainer
 @onready var errned_points_label: Label = $MarginContainer/VBoxContainer/ErrnedPointsLabel
-
+@onready var weapon_position:Vector3 = weapon_mesh.position
 
 
 
@@ -56,16 +58,19 @@ func _process(delta: float) -> void:
 					muzzleFlashParticle.restart()
 					print(collider)
 					points+=collider.get_parent().deal_damage(10,collider)
+					weapon_mesh.translate(Vector3.BACK)	
 					
 					
-				
+	
 	
 	if Input.is_action_just_pressed("shot") and bullets>0:
+		weapon_mesh.translate(Vector3.BACK)
 		muzzleFlashParticle.restart()
 		bullets-=1			
 		
 	if Input.is_action_just_pressed("reload"):
 		reload_sequence()
+	weapon_mesh.position =weapon_mesh.position.lerp(weapon_position,delta * 10.0)
 	
 
 		

@@ -13,10 +13,11 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_ed0y2"]
 font_size = 32
 
-[node name="RayCastCamera" type="Camera3D" node_paths=PackedStringArray("muzzleFlashParticle")]
+[node name="RayCastCamera" type="Camera3D" node_paths=PackedStringArray("muzzleFlashParticle", "weapon_mesh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 script = ExtResource("1_xxkv6")
 muzzleFlashParticle = NodePath("Weapon/MuzlleParticles")
+weapon_mesh = NodePath("Weapon")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 
