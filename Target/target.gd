@@ -15,6 +15,7 @@ var health:int:
 @export var green_area_points:int = 50
 @export var red_area_points:int = 100
 @export var PopUp:PackedScene
+@export var hit_target_particles: GPUParticles3D
 
 var delete_delay:float = 2.5
 
@@ -47,6 +48,7 @@ func _process(delta: float) -> void:
 func deal_damage(damage:int,collider:CSGBox3D) -> int:
 	health-=damage
 	animation_player.play("take_shot")
+	hit_target_particles.emitting = true
 	var new_pop_up = PopUp.instantiate()
 
 #	label_animation.play("display_points")
