@@ -3,6 +3,7 @@
 [sub_resource type="GDScript" id="GDScript_46fwu"]
 script/source = "extends BoxContainer
 
+@export_file(\"*.tscn\") var main_menu
 
 func _process(delta: float) -> void:
 		if Input.is_action_just_pressed(\"pauseGame\"):
@@ -24,6 +25,11 @@ func _on_quit_button_pressed() -> void:
 func _on_resume_button_pressed() -> void:
 	get_tree().paused = false
 	visible = false
+
+
+func _on_back_to_menu_button_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file(main_menu)
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_pv4bh"]
@@ -38,6 +44,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_46fwu")
+main_menu = "res://main_menu.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -64,6 +71,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Resume"
 
+[node name="BackToMenuButton" type="Button" parent="ColorRect/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Back To Main Menu"
+
 [node name="QuitButton" type="Button" parent="ColorRect/HBoxContainer"]
 process_mode = 3
 layout_mode = 2
@@ -71,4 +83,5 @@ theme_override_font_sizes/font_size = 64
 text = "Quit"
 
 [connection signal="pressed" from="ColorRect/HBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="ColorRect/HBoxContainer/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
 [connection signal="pressed" from="ColorRect/HBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
