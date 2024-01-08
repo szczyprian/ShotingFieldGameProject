@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://baqn5evc8f53v"]
+
+[ext_resource type="PackedScene" uid="uid://bhs4gehfqeu3a" path="res://Weapon/RayCamera.tscn" id="1_url18"]
+[ext_resource type="PackedScene" uid="uid://b7xoitp8dppc1" path="res://Target/target_spawner.tscn" id="2_ivb7b"]
+[ext_resource type="PackedScene" uid="uid://dsy7qbagwecsi" path="res://PauseMenu.tscn" id="3_afygq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h68ll"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_cuwkt"]
+sky_material = SubResource("ProceduralSkyMaterial_h68ll")
+
+[sub_resource type="Environment" id="Environment_m2xfl"]
+background_mode = 2
+sky = SubResource("Sky_cuwkt")
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3p2cd"]
+albedo_color = Color(1, 0.454902, 0.172549, 1)
+
+[node name="Level2" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m2xfl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="RayCastCamera" parent="." instance=ExtResource("1_url18")]
+max_bullets = 100
+game_time = 35.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+material_override = SubResource("StandardMaterial3D_3p2cd")
+flip_faces = true
+size = Vector3(20, 10, 30)
+
+[node name="TargetSpawner" parent="." instance=ExtResource("2_ivb7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09045, -16.1952)
+target_speed = 10.0
+target_direction = Vector3(0, 0, 1)
+delete_delay = 60.0
+
+[node name="TargetSpawner2" parent="." instance=ExtResource("2_ivb7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -1.09045, -5.19515)
+target_speed = 5.0
+target_direction = Vector3(-1, 0, 0)
+delete_delay = 60.0
+
+[node name="BoxContainer" parent="." instance=ExtResource("3_afygq")]
