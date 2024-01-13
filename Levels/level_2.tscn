@@ -40,7 +40,16 @@ size = Vector3(20, 10, 30)
 
 [node name="TargetSpawner" parent="." instance=ExtResource("2_ivb7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09045, -16.1952)
-target_speed = 10.0
+target_direction = Vector3(0, 0, 1)
+delete_delay = 60.0
+
+[node name="TargetSpawner3" parent="." instance=ExtResource("2_ivb7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -1.09045, -16.1952)
+target_direction = Vector3(0, 0, 1)
+delete_delay = 60.0
+
+[node name="TargetSpawner4" parent="." instance=ExtResource("2_ivb7b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.84989, -1.09045, -15.6995)
 target_direction = Vector3(0, 0, 1)
 delete_delay = 60.0
 

@@ -8,6 +8,7 @@ default_font_size = 99
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_4ccud")
 level1 = "res://Levels/level_1.tscn"
+level2 = "res://Levels/level_2.tscn"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -62,4 +63,5 @@ theme_override_font_sizes/font_size = 32
 text = "Quit Game"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
