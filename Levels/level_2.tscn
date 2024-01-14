@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://baqn5evc8f53v"]
+[gd_scene load_steps=12 format=3 uid="uid://baqn5evc8f53v"]
 
 [ext_resource type="PackedScene" uid="uid://bhs4gehfqeu3a" path="res://Weapon/RayCamera.tscn" id="1_url18"]
 [ext_resource type="PackedScene" uid="uid://b7xoitp8dppc1" path="res://Target/target_spawner.tscn" id="2_ivb7b"]
@@ -15,6 +15,18 @@ sky_material = SubResource("ProceduralSkyMaterial_h68ll")
 background_mode = 2
 sky = SubResource("Sky_cuwkt")
 tonemap_mode = 2
+
+[sub_resource type="Curve" id="Curve_di4bs"]
+min_value = 1.0
+max_value = 3.0
+_data = [Vector2(0.00485437, 2.95789), 0.0, 0.0, 0, 0, Vector2(1, 1.04211), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_et2pm"]
+min_value = 1.0
+max_value = 3.0
+_data = [Vector2(0, 2.93684), 0.0, 0.0, 0, 0, Vector2(0.985437, 1.08421), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iq3tg"]
 albedo_color = Color(0, 0.313726, 1, 1)
@@ -40,8 +52,10 @@ game_time = 35.0
 
 [node name="TargetSpawner" parent="." instance=ExtResource("2_ivb7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09045, -16.1952)
+target_speed = 5.0
 target_direction = Vector3(0, 0, 1)
 delete_delay = 60.0
+spawning_frequemcy_curve = SubResource("Curve_di4bs")
 
 [node name="TargetSpawner3" parent="." instance=ExtResource("2_ivb7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -1.09045, -16.1952)
@@ -58,6 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -1.09045, -5.19515)
 target_speed = 5.0
 target_direction = Vector3(-1, 0, 0)
 delete_delay = 60.0
+spawning_frequemcy_curve = SubResource("Curve_et2pm")
 
 [node name="BoxContainer" parent="." instance=ExtResource("3_afygq")]
 
