@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://baqn5evc8f53v"]
+[gd_scene load_steps=10 format=3 uid="uid://baqn5evc8f53v"]
 
 [ext_resource type="PackedScene" uid="uid://bhs4gehfqeu3a" path="res://Weapon/RayCamera.tscn" id="1_url18"]
 [ext_resource type="PackedScene" uid="uid://b7xoitp8dppc1" path="res://Target/target_spawner.tscn" id="2_ivb7b"]
@@ -16,8 +16,14 @@ background_mode = 2
 sky = SubResource("Sky_cuwkt")
 tonemap_mode = 2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iq3tg"]
+albedo_color = Color(0, 0.313726, 1, 1)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3p2cd"]
 albedo_color = Color(1, 0.454902, 0.172549, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q08xy"]
+albedo_color = Color(0.329412, 0.329412, 0.329412, 1)
 
 [node name="Level2" type="Node3D"]
 
@@ -31,12 +37,6 @@ shadow_enabled = true
 [node name="RayCastCamera" parent="." instance=ExtResource("1_url18")]
 max_bullets = 100
 game_time = 35.0
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-material_override = SubResource("StandardMaterial3D_3p2cd")
-flip_faces = true
-size = Vector3(20, 10, 30)
 
 [node name="TargetSpawner" parent="." instance=ExtResource("2_ivb7b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09045, -16.1952)
@@ -60,3 +60,51 @@ target_direction = Vector3(-1, 0, 0)
 delete_delay = 60.0
 
 [node name="BoxContainer" parent="." instance=ExtResource("3_afygq")]
+
+[node name="GameObjects" type="Node3D" parent="."]
+
+[node name="Barier" type="CSGBox3D" parent="GameObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92874, -1.5, -11.8348)
+material_override = SubResource("StandardMaterial3D_iq3tg")
+size = Vector3(1, 1, 10)
+
+[node name="Barier2" type="CSGBox3D" parent="GameObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07126, -1.5, -11.8348)
+material_override = SubResource("StandardMaterial3D_iq3tg")
+size = Vector3(1, 1, 10)
+
+[node name="Barier3" type="CSGBox3D" parent="GameObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92874, -1.5, 1.16523)
+material_override = SubResource("StandardMaterial3D_iq3tg")
+size = Vector3(1, 1, 10)
+
+[node name="Barier4" type="CSGBox3D" parent="GameObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.07126, -1.5, 1.16523)
+material_override = SubResource("StandardMaterial3D_iq3tg")
+size = Vector3(1, 1, 10)
+
+[node name="Room" type="CSGBox3D" parent="GameObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+material_override = SubResource("StandardMaterial3D_3p2cd")
+flip_faces = true
+size = Vector3(20, 10, 30)
+
+[node name="Ramp1" type="CSGBox3D" parent="GameObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000689745, -1.67961, -7)
+material_override = SubResource("StandardMaterial3D_q08xy")
+size = Vector3(1, 0.3, 20)
+
+[node name="Ramp2" type="CSGBox3D" parent="GameObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.85771, -1.72086, -7)
+material_override = SubResource("StandardMaterial3D_q08xy")
+size = Vector3(1, 0.3, 20)
+
+[node name="Ramp3" type="CSGBox3D" parent="GameObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -1.75743, -7)
+material_override = SubResource("StandardMaterial3D_q08xy")
+size = Vector3(1, 0.3, 20)
+
+[node name="Ramp4" type="CSGBox3D" parent="GameObjects"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.89197, -1.72086, -5.15917)
+material_override = SubResource("StandardMaterial3D_q08xy")
+size = Vector3(1, 0.3, 35)
